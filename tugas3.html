@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tugas3</title>
+</head>
+<body>
+
+    <div id="clock"></div>
+
+    <script type="text/javascript">
+
+        function soal3() {
+                var a_p = "";
+                var today = new Date();
+                var curr_hour = today.getHours();
+                var curr_minute = today.getMinutes();
+                var curr_second = today.getSeconds();
+                if (curr_hour < 11) {
+                    a_p = "AM, Selamat Pagi, ayo beraktivitas, ayo semangat";
+                } else if (curr_hour <= 14) {
+                    a_p = "PM, Selamat Siang, selamat beristirahat";
+                } else if (curr_hour <= 19) {
+                    a_p = "PM, Selamat Sore ya";
+                } else if (curr_hour <= 24) {
+                    a_p = "PM, Selamat Malam dan sampai jumpa besok pagi";
+                }
+                if (curr_hour == 0) {
+                    curr_hour = 24;
+                }
+                if (curr_hour > 24) {
+                    curr_hour = curr_hour - 24;
+                }
+                curr_hour = checkTime(curr_hour);
+                curr_minute = checkTime(curr_minute);
+                curr_second = checkTime(curr_second);
+                var jam = document.getElementById('clock').innerHTML = curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p ;
+                    const masuk = confirm("Anda yakin mau masuk?");
+                    if (masuk) {
+                        const name = prompt("Siapa Nama Anda?");
+                        alert(`Hello ${name} sekarang sudah menunjukkan pukul ${jam}`);
+                    } else {
+                        alert("Bye Bye");
+                    }
+                }
+                soal3();
+
+                function checkTime(i) {
+                    if (i < 10) {
+                        i = "0" + i;
+                    }
+                    return i;
+                }
+
+    </script>
+    
+</body>
+</html>

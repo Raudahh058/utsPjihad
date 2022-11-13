@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tugas4</title>
+</head>
+<body>
+
+         <div id="isi" class="content"></div>
+            <div id="message" style="display: none; background: lightgreen;">
+                Pemesanan Berhasil
+            </div>
+            <button id="btn-submit">Pesan Sekarang</button>
+
+            <div id="pesan" style="display: none; background: red;">
+                Proses Pembatalan Berhasil
+            </div>
+            <button id="submit">Batal</button>
+
+    <script type="text/javascript">
+
+        const content = document.getElementById("isi");
+
+                const moto = document.createElement("h1");
+                moto.textContent = "Selamat Datang Di Hotel Golden Palace Hotel Lombok";
+                content.appendChild(moto);
+
+                const nama = document.createElement("p");
+                nama.textContent = "Nama Hotel : Hotel Golden Palace Hotel Lombok";
+                content.appendChild(nama);
+
+                const nim = document.createElement("p");
+                nim.textContent = "Alamat : Jl.Sriwijaya No.38, Septa Marga, Kec.Cakranegara, Kota Mataram, Nusa Tenggara Barat 83232";
+                content.appendChild(nim);
+
+                const tentang = document.createElement("h1");
+                tentang.textContent = "Fasilitas Hotel Hotel Grand Royal Bil Hotel";
+                content.appendChild(tentang);
+
+                const jurusan = document.createElement("p");
+                jurusan.textContent = "Fasilitas : free wifi,AC, Restoran, Kolamrenang";
+                content.appendChild(jurusan);
+
+                const fasilitas = document.createElement("p");
+                fasilitas.textContent = "Fasilitas Kamar : Memiliki 200 kamar dari 4 lantai";
+                content.appendChild(fasilitas);
+
+                const bintang = document.createElement("p");
+                bintang.textContent = "Bintang : Bintang 4";
+                content.appendChild(bintang);
+
+        const hotel = {
+            Namahotel : "Hotel Golden Palace Hotel Lombok ",
+            alamat : "Alamat : Jl.Sriwijaya No.38, Septa Marga, Kec.Cakranegara, Kota Mataram, Nusa Tenggara Barat 83232",
+            jkamar : "200 kamar",
+            fasilitas : "free wifi, diskon 80% untuk pelanggan baru",
+            klasifikasi : "bintang 4",
+            boking : function(){
+                const eventRegisterComplete = new Event('register-complete');
+                const messageElement = document.getElementById('message');
+                const btnSubmit = document.getElementById('btn-submit');
+                document.addEventListener('register-complete', function (e) {
+                    messageElement.style.display = "flex";
+                });
+                btnSubmit.addEventListener('click', function (e) {
+                    document.dispatchEvent(eventRegisterComplete);
+                });
+            },
+            batal : function(){
+                const eventRegisterComplete = new Event('cancle-complete');
+                const messageElement = document.getElementById('pesan');
+                const btnSubmit = document.getElementById('submit');
+                document.addEventListener('cancle-complete', function (e) {
+                    messageElement.style.display = "flex";
+                });
+                btnSubmit.addEventListener('click', function (e) {
+                    document.dispatchEvent(eventRegisterComplete);
+                });
+
+            },
+        };
+        hotel.boking();
+        hotel.batal();
+
+    </script>
+    
+</body>
+</html>
